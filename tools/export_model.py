@@ -125,8 +125,8 @@ if __name__ == '__main__':
     model = paddle.jit.to_static(
         test_model,
         input_spec=[
-            InputSpec(shape=[1, 3, 36, 78], dtype='float32', name='x'),
-            InputSpec(shape=[1, 3, 36, 78], dtype='float32', name='y')
+            InputSpec(shape=[-1, 3, -1, -1], dtype='float32', name='x'),
+            InputSpec(shape=[-1, 3, -1, -1], dtype='float32', name='y')
         ])
     # save inference model
     paddle.jit.save(model, os.path.join(opt.save_inference_dir, "inference"))
